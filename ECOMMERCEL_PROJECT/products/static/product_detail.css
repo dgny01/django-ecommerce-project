@@ -1,0 +1,150 @@
+/* --- 0. KÖK DEĞİŞKENLERİ --- */
+/* Bu değişkenler Neon temasından alınmıştır. */
+:root {
+    --space-black: #0a0a0f;
+    --deep-navy: #0f1429;
+    --electric-blue: #00d4ff;
+    --cyan-glow: #00ffff;
+    --neon-purple: #9d4edd;
+    --glass-white: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(0, 212, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0c0;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --glow-intensity: 0 0 10px;
+}
+
+/* --- 1. SAYFA YAPISI VE BODY --- */
+/* Ürün sayfasının da login/register temasına uyumlu olması için arka planı ayarlarız. */
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(ellipse at center, #1a1f3a 0%, var(--space-black) 100%);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* --- 2. İÇERİK KAPSAYICISI (Content Wrapper) --- */
+/* İçeriği merkeze almak ve base.html'den gelen stilleri ezmek için. */
+.content-wrapper {
+    /* Genel base.html'den gelen max-width'i sıfırlıyoruz ki kart yayılabilsin */
+    max-width: 1200px !important;
+    margin: 30px auto !important; 
+    padding: 0 20px !important;
+    
+    /* Login sayfalarında kullandığımız ortalamayı kaldırıyoruz */
+    display: block !important; 
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* --- 3. ANA ÜRÜN KARTI DÜZENİ --- */
+/* content block'u içine bir kapsayıcı eklememiz gerekir.
+   Varsayılan olarak block content'i hedefleyelim, ancak HTML'e .product-detail-card
+   eklemeniz en doğrusudur. */
+.contents { 
+    display: flex;
+    flex-wrap: wrap; /* Mobil uyum için */
+    gap: 40px;
+    
+    /* Neon cam kart stili */
+    background: var(--glass-white) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 40px !important;
+    box-shadow: var(--glow-intensity) rgba(0, 212, 255, 0.15) !important;
+}
+
+/* --- 4. ÜRÜN GÖRSELİ --- */
+.contents img {
+    flex: 1; /* Görselin alanı kaplamasını sağla */
+    min-width: 100px;
+    max-height: 500px; 
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid var(--electric-blue); /* Neon çerçeve */
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.contents img:hover {
+    transform: scale(1.02);
+}
+
+/* --- 5. ÜRÜN BİLGİ ALANI (İçerik) --- */
+.product-info {
+    flex: 1.5; /* Bilgi alanına daha fazla yer ver */
+    min-width: 300px;
+}
+
+.contents h1 {
+    color: var(--electric-blue);
+    text-shadow: 0 0 8px var(--cyan-glow);
+    font-size: 42px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.contents p {
+    color: var(--text-secondary);
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* --- 6. FİYAT STİLİ --- */
+.contents p:nth-of-type(2) { /* Fiyat paragrafını varsayarak (fiyat:{{ product.price }}) */
+    color: var(--text-primary);
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--neon-purple);
+    margin-top: 30px;
+}
+
+/* --- 7. FORMLAR ve BUTONLAR --- */
+.contents form {
+    margin-top: 30px;
+}
+
+.contents button[type="submit"] {
+    /* Sepete Ekle butonu için Elektrik Mavisi/Siyan rengi kullanalım */
+    background: linear-gradient(90deg, var(--electric-blue), var(--cyan-glow)); 
+    color: var(--deep-navy); 
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.6); 
+    transition: var(--transition-smooth);
+    width: 100%;
+    max-width: 300px;
+}
+
+.contents button[type="submit"]:hover {
+    background: linear-gradient(90deg, var(--cyan-glow), var(--electric-blue));
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.8);
+    color: var(--space-black);
+}
+
+.contents button[type="submit"]:active {
+    transform: translateY(2px);
+}
+
+/* --- 8. MOBİL UYUMLULUK --- */
+@media (max-width: 768px) {
+    .contents {
+        padding: 20px;
+        flex-direction: column;
+    }
+    .contents img, .product-info {
+        min-width: 100%;
+    }
+    .contents h1 {
+        font-size: 32px;
+    }
+    .contents button[type="submit"] {
+        max-width: 100%;
+    }
+}

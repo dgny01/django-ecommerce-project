@@ -1,0 +1,32 @@
+:root {
+            --space-black: #0a0a0f;
+            --deep-navy: #0f1429;
+            --electric-blue: #00d4ff;
+            --cyan-glow: #00ffff;
+            --neon-purple: #9d4edd;
+            --quantum-gold: #ffd700;
+            --glass-white: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(0, 212, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0c0;
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --glow-intensity: 0 0 20px;
+        }
+
+
+
+body{
+     background: radial-gradient(ellipse at center, #1a1f3a 0%, var(--space-black) 100%);
+}
+
+.content-wrapper{
+    background: var(--glass-white);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+}

@@ -1,0 +1,171 @@
+/* ECOMMERCEL_PROJECT/static/css/style.css */
+
+/* --- GLOBAL STYLES --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Çok Açık Gri (Temiz Arkaplan) */
+    color: #343a40;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #212529;
+    border-bottom: 2px solid #ffc107;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* İçerik Sarıcısı: Tüm sayfa içeriğini ortalar */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- NAVBAR STYLES --- */
+.main-navbar {
+    background-color: #212529; /* Koyu Gri/Siyah Arkaplan */
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.logo a {
+    color: #ffc107; /* Altın Rengi */
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.logo a:hover {
+    color: white;
+}
+
+/* Navigation Links (Ortak Menü) */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 15px;
+}
+
+.nav-link {
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    background-color: #343a40;
+    color: #ffc107;
+}
+
+.cart-link {
+    background-color: #007bff; /* Sepet için Mavi vurgu */
+}
+
+.cart-link:hover {
+    background-color: #0056b3;
+}
+
+/* Kullanıcı Linkleri */
+.user-links {
+    display: flex;
+    align-items: center;
+}
+
+.auth-user {
+    color: #adb5bd;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.register-btn {
+    background-color: #28a745; /* Kayıt için Yeşil vurgu */
+    color: white !important;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.register-btn:hover {
+    background-color: #1e7e34;
+}
+
+/* Arama Çubuğu */
+.search-bar {
+    flex-grow: 1; 
+    max-width: 400px;
+    margin: 0 40px;
+}
+
+.search-bar form {
+    display: flex;
+    width: 100%;
+}
+
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px 0 0 4px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.search-button {
+    padding: 10px 18px;
+    background-color: #ffc107; 
+    color: #212529;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #e0a800;
+}
+
+/* --- FOOTER STYLES --- */
+/* ECOMMERCEL_PROJECT/static/css/style.css */
+
+/* --- FOOTER STYLES --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #343a40;
+    color: #adb5bd;
+    
+    /* BU DEĞERİ ARTIRIYORUZ */
+    margin-top: 315px; /* Veya istediğiniz daha büyük bir değer (75px, 120px vb.) */
+    
+    border-top: 1px solid #495057;
+    font-size: 14px;
+}

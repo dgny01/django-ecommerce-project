@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+All Products
+{% endblock  %}
+
+{% block extra_css %}  
+<link rel="stylesheet" href="{% static 'product_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="products-container">
+    <h1>Products</h1>
+<ul>
+    {% for product in products %}
+    <li>
+    <a href="{% url 'products:product-detail' product.id %}">{{ product.name }}</a>
+    <span class="price">${{ product.price }}</span>
+</li>
+
+
+    {% endfor %}
+</ul>
+</div>
+{% endblock  %}

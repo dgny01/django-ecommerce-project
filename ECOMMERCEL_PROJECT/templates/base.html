@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block extra_css %}
+    {% endblock %}
+    
+    <link rel="shortcut icon"   href="images/favicon.ico">
+    
+</head>
+<body>
+    <nav class="main-navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="{% url 'products:product-list' %}">MyShop</a>
+            </div>
+
+            <div class="search-bar">
+                <form method="GET" action="{% url 'products:product-list' %}">
+                    <input type="text" name="q" placeholder="Search products..." class="search-input">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="{% url 'products:product-list' %}" class="nav-link">Products</a></li>
+                <li><a href="{% url 'cart:cart-detail' %}" class="nav-link cart-link">Cart</a></li>
+                
+                <li class="user-links">
+                    {% if request.user.is_authenticated %}
+                        <span class="auth-user">Hi, {{ request.user.username }}</span>
+                        <a href="{% url 'users:logout' %}" class="nav-link logout-btn">Logout</a>
+                    {% else %}
+                        <a href="{% url 'users:login' %}" class="nav-link">Login</a>
+                        <a href="{% url 'users:register' %}" class="nav-link register-btn">Register</a>
+                    {% endif %}
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 MyShop. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

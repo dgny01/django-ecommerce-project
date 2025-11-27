@@ -1,0 +1,15 @@
+# Virtual Environment (No one should see this)
+venv/
+env/
+.env
+
+# Python Junk
+__pycache__/
+*.pyc
+
+# Database (Generally, the local database is not installed, a new one is installed on the server)
+db.sqlite3
+
+# IDE Settings
+.vscode/
+.idea/

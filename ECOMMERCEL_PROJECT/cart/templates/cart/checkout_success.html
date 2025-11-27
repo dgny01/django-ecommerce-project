@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Checkout Success
+{% endblock %}
+
+
+{% block extra_css %}  
+<link rel="stylesheet" href="{% static 'checkout_success.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+    <h1 style="color: green; text-align: center;">🎉 Your Order Has Been Completed Successfully!</h1>
+    <p>Hello {{ order.user.user.username }},</p>
+    <p>Total <strong>${{ order.total_price }}</strong> your order for the amount has been created successfully.</p>
+
+    <h3>Order Details:</h3>
+    <ul>
+        {% for item in order.items.all %}
+        <li>{{ item.product.name }} - {{ item.quantity }} x ${{ item.product.price }} = ${{ item.get_total_price }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Total Amount: <strong>${{ order.total_price }}</strong></p>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'products:product-list' %}" style="padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 5px; text-decoration: none;">Continue Shopping</a>
+        <a href="{% url 'cart:cart-detail' %}" style="padding: 10px 20px; background-color: #2196F3; color: white; border-radius: 5px; text-decoration: none;">See My Cart</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Cart Detail - MyShop{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'cart_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="content-wrapper">
+        <div class="content">
+
+            <h1>My Cart</h1>
+
+            {% if items %}
+            <ul class="cart-list">
+                {% for item in items %}
+                <li class="cart-item">
+                    <div class="cart-item-info">
+                        
+                        <div class="item-name">{{ item.product.name }}</div>
+
+                        <div class="item-details">
+                            <span class="item-quantity">{{ item.quantity }}</span>
+                            <span class="times">x</span>
+                            <span class="unit-price">${{ item.product.price|floatformat:2 }}</span>
+                            <span class="equals">=</span>
+                            <span class="total-price">${{ item.get_total_price|floatformat:2 }}</span>
+                        </div>
+                    </div>
+                    
+                    <form action="{% url 'cart:cart-detail' %}" method="POST" class="remove-item-form" aria-label="Remove item from cart">
+                        {% csrf_token %}
+                        <input type="hidden" name="remove_item" value="{{ item.id }}">
+                        <button type="submit" class="btn btn-remove">Remove</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div class="cart-summary">
+                <p class="cart-total" aria-live="polite">Total: ${{ total|floatformat:2 }}</p>
+
+                <form action="{% url 'cart:checkout' %}" method="POST" class="checkout-form" aria-label="Checkout form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-checkout">CheckOut</button>
+                </form>
+            </div>
+
+            {% else %}
+                <div class="empty-cart-message">Your cart is currently empty.</div>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
